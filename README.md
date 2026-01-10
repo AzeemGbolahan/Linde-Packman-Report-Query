@@ -65,7 +65,7 @@ This ensures student data remains private and secure.
 ---
 
 ## Project structure
-
+```bash
 .
 ├── app.py                     # Streamlit web interface
 ├── load_docs.py               # Load PDF/DOCX files from data/
@@ -79,31 +79,37 @@ This ensures student data remains private and secure.
 ├── .gitignore
 ├── data/                      # Local only (ignored)
 └── chroma/                    # Local only (ignored)
-
-
+```
 
 ---
 
 ## Setup
 
 ### 1. Clone the repository
+```bash
 git clone https://github.com/AzeemGbolahan/Linde-Packman-Student-Report-Query.git
 cd Linde-Packman-Student-Report-Query
+```
 
 
 ### 2. Create and activate a virtual environment
+```bash
 python -m venv .venv
 source .venv/bin/activate
+```
 
 ### 3. Install dependencies
+```bash
 pip install streamlit python-dotenv langchain langchain-community \
            langchain-openai langchain-chroma chromadb \
            rank-bm25 pypdf docx2txt
+```
 
 ### 4. Add your OpenAI API key
-
 Create a `.env` file in the project root:
+```bash
 OPENAI_API_KEY=your_api_key_here
+```
 
 
 
@@ -113,15 +119,14 @@ OPENAI_API_KEY=your_api_key_here
 
 Place report files under the `data/` directory.  
 The folder structure can match existing archival organization.
-
 Example:
-
+```bash
 data/
 └── 1_A_Azeem_Files/
     ├── 2023_Summer_Reports/
     ├── 2024_Summer_Reports/
     └── 2025_Summer_Reports/
-
+```
 Supported formats:
 - `.pdf`
 - `.docx`
@@ -129,24 +134,28 @@ Supported formats:
 ---
 
 ## Building the index
-
 Run these steps once, or whenever reports change:
+```bash
 python load_docs.py
 python split_docs.py
 python build_index.py
+```
 
 This creates a local Chroma vector database inside `chroma/`.
-
 ---
 
 ## Running the interface
 
 Start the application with:
+```bash
 python -m streamlit run app.py
+```
 
 
 Open a browser and go to:
+```bash
 http://localhost:8501
+```
 
 ---
 
